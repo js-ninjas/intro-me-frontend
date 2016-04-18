@@ -8,8 +8,10 @@ myApp.config(['$routeProvider',
         $routeProvider.when('/login', {
                 templateUrl: 'views/login.html',
                 controller: 'LoginController'
-            })
-            .otherwise({
+            }).when('/profile', {
+                templateUrl: 'views/profile.html',
+                controller: 'ProfileController'
+            }).otherwise({
                 redirectTo: '/'
             });
     }]);
