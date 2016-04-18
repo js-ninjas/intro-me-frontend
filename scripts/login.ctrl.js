@@ -1,1 +1,2 @@
-myApp.controller('LoginController', function($scope) {});
+myApp.controller('LoginController', function($scope) {
+});
