@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <title>KnowMe</title>
+    <title>Intro.Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/bootstrap-theme.css" type='text/css'>
     <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css"/>
@@ -10,35 +10,51 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="assets/css/metisMenu.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <!-- ASSETS -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/angular.min.js"></script>
-        <script src="assets/js/angular-animate.min.js"></script>
-        <script src="assets/js/angular-cookies.min.js"></script>
-        <script src="assets/js/angular-route.min.js"></script>
-        <script src="assets/js/angular-touch.min.js"></script>
-        <script src="assets/js/angular-preload-image.min.js"></script>
-        <script src="assets/js/ui-bootstrap-tpls-1.2.4.js"></script>
-        <script src="assets/js/bootstrap.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- / -->
-    <!-- MODULES -->
-    <!-- / -->
-    <!-- CONTROLLERS -->
-        <!-- / -->
 </head>
 
-<body ng-view>
+<body>
+<!-- External libraries -->
+<script src="./assets/js/jquery.min.js"></script>
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/angular-cookies.min.js"></script>
+<script src="assets/js/angular-route.min.js"></script>
+<script src="assets/js/ui-bootstrap-tpls-1.2.4.js"></script>
 
-   <div  ng-class="container" ></div>
-   <script src="assets/js/jquery.min.js"></script>
-              <script src="app.js"></script>
-                      <script src="scripts/login.ctrl.js"></script>
-                      <script src="scripts/profile.ctrl.js"></script>
+<!--project controllers & internal libraries-->
+<script src="app.js"></script>
+<script src="scripts/login.ctrl.js"></script>
+<script src="scripts/profile.ctrl.js"></script>
 
+<div><!--Nav bar-->
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Intro.Me</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<!--Single page application's viewing area-->
+<div ng-view class="container-fluid">
+
+</div>
+
+
+<footer>
+    <div class="container">
+        <p class="text-muted">Copy Rights Reserved By Intro.Me.</p>
+    </div>
+</footer>
 
 
 </body>
+
 </html>
