@@ -14,12 +14,15 @@ angular.module('introMeApp')
       'AngularJS',
       'Karma'
     ];
+
     $scope.validateUser = function () {
 
       if ($scope.username === 'k@k.com' && $scope.password === 'kiran') {
         $location.path('/profile');
       }
       else {
+          console.log("login")
+          console.log($scope.awesomeThings)
         alert('Login incorrect');
       }
     };

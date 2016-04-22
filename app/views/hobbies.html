@@ -1,0 +1,21 @@
+<div class="row hobbies">
+    <div class="col-md-4 thumbnail hobbyTile" ng-repeat="hobby in hobbies">
+        <h1> {{hobby.name}}</h1>
+        <p> {{hobby.desc}}</p>
+    </div>
+
+    <div class=" col-md-4">
+        <form role="form" ng-submit="addHobby()">
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" class="form-control" autofocus ng-model="newHobby" placeholder="Hobby" required>
+                    <input type="text" class="form-control" ng-model="newDesc" placeholder="Description" required>
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-lg btn-warning "><span
+                  class="glyphicon glyphicon-plus">Add</span></button>
+        </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
