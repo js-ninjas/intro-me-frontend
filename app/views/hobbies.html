@@ -23,8 +23,7 @@
             <h1 class="hobbies"> {{hobby.name}}</h1>
             <p class="hobbies"> {{hobby.desc}}</p>
             <span class="pull-right editHobby">
-                <a data-toggle="modal" data-target="#editHobby"><span
-                        class="glyphicon glyphicon-pencil editHobby"></span></a>
+                <a data-toggle="modal" data-target="#editHobby" ng-click="editHobby($index)"><span class="glyphicon glyphicon-pencil editHobby"></span></a>
                 <a ng-click="removeHobby($index)"><span class="glyphicon glyphicon-trash editHobby"></span></a>
             </span>
         </div>
@@ -38,7 +37,7 @@
                 <h4 class="modal-title">Please fill the form</h4>
             </div>
             <div class="modal-body">
-                <form role="form" class="form-inline" ng-submit="addHobby(index)">
+                <form role="form" class="form-inline">
                     <div class="row">
 
                         <div class="input-group col-md-4 col-md-offset-1">
@@ -50,7 +49,7 @@
                             <input type="text" class="form-control" ng-model="newDesc" placeholder="Description" required>
                         </div>
 
-                        <button type="submit" class="btn  btn-warning" ><span class="glyphicon glyphicon-plus">Add</span></button>
+                        <button type="submit" class="btn  btn-warning" data-dismiss="modal" ng-click="editHobby()">Update</span></button>
 
                     </div>
                 </form>

@@ -28,6 +28,7 @@ a:hover, a:focus {
 .hobbyTile{
     background-color: #00b3ee;
     font-family: sans-serif;
+    border-radius: 15px;
 }
 
 .editHobby{
