@@ -9,17 +9,7 @@
  */
 angular.module('introMeApp')
     .controller('hobbiesCtrl', function ($scope) {
-        $scope.hobbies = [
-            {
-                name: 'driving',
-                desc: "good hobby"
-            },
-            {
-                name: 'driving',
-                desc: "good hobby"
-            }
-
-        ];
+        $scope.hobbies = [];
         $scope.addHobby = function () {
             console.log("button clicked");
             if ($scope.newHobby != null && $scope.newDesc != null) {

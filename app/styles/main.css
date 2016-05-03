@@ -29,3 +29,8 @@ a:hover, a:focus {
     background-color: #00b3ee;
     font-family: sans-serif;
 }
+
+.editHobby{
+    font-size: 10px;
+    letter-spacing: 3px;
+}
