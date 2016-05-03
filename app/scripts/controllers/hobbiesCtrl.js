@@ -10,14 +10,14 @@
 angular.module('introMeApp')
     .controller('hobbiesCtrl', function ($scope) {
         $scope.hobbies = [];
-        $scope.addHobby = function () {
+        $scope.addHobby = function (index) {
             console.log("button clicked");
+            console.log("edit indexxx")
+            console.log(index)
             if ($scope.newHobby != null && $scope.newDesc != null) {
                 var temp = {};
                 temp['name'] = $scope.newHobby;
                 temp['desc'] = $scope.newDesc;
-                console.log("TEMP VAL");
-                console.log(temp);
                 $scope.hobbies.push(temp);
                 $scope.newHobby = null;
                 $scope.newDesc = null;
@@ -26,6 +26,14 @@ angular.module('introMeApp')
                 alert("Fill the form");
             }
 
-        }
+        };
+
+        $scope.removeHobby = function (index) {
+            $scope.hobbies.splice(index, 1)
+        };
+
+        $scope.editHobby = function ($scope, index) {
+
+        };
 
     });
