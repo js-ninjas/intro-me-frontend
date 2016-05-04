@@ -39,9 +39,9 @@ angular
                 templateUrl: 'views/hobbies.html',
                 controller: 'hobbiesCtrl'
             })
-            .when('/editHobby', {
-                templateUrl: 'views/editHobby.html',
-                controller: 'editHobbyCtrl'
+            .when('/photos', {
+                templateUrl: 'views/photos.html',
+                controller: 'photosCtrl'
             })
             .otherwise({
                 redirectTo: '/'
