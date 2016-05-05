@@ -14,6 +14,9 @@ angular.module('introMeApp')
     $scope.editShow=false;
     $scope.personInfo=null;
     var timer;
+
+   $scope.personInfo={company: "TCS" ,contactNo: "9876543210", email: "abcdEF@gmail.com", fName: "Mohammad",homeTown:"Hazaribagh",lName:"Hussain",location:"India"};
+
     $scope.showEdit=function()
     {
     	 $scope.hideShow=false;
@@ -31,7 +34,7 @@ angular.module('introMeApp')
 
     $scope.savePersonInfo=function(person) // person object with all person info.
     {
-    	console.log(person);
+    	//console.log(person);
     	
     	$scope.personInfo=person;
     	
