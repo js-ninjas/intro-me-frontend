@@ -35,3 +35,10 @@ a:hover, a:focus {
     font-size: 10px;
     letter-spacing: 3px;
 }
+
+
+/*For Profile.html */
+.pad-up{
+  padding-top: 7px;
+  /*margin-top: 10px*/
+}

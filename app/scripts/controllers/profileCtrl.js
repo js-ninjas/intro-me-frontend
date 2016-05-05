@@ -8,10 +8,36 @@
  * Controller of the introMeApp
  */
 angular.module('introMeApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('profileCtrl', function ($scope, $timeout) {
+    $scope.awesomeThings = "athar Hussain";
+    $scope.hideShow=true;
+    $scope.editShow=false;
+    $scope.personInfo=null;
+    var timer;
+    $scope.showEdit=function()
+    {
+    	 $scope.hideShow=false;
+    	 $scope.editShow=true;
+    };
+    
+    $scope.hideEdit=function()
+    {
+    	$scope.editShow=!$scope.editShow;
+    	timer = $timeout(function(){
+    	    $scope.hideShow=!$scope.hideShow;
+        }, 250);
+
+    };
+
+    $scope.savePersonInfo=function(person) // person object with all person info.
+    {
+    	console.log(person);
+    	
+    	$scope.personInfo=person;
+    	
+    	console.log($scope.personInfo);
+    	
+    	$scope.hideEdit();
+    	
+    };
   });
