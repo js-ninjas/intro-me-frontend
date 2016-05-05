@@ -11,6 +11,7 @@ angular.module('introMeApp')
     .controller('hobbiesCtrl', function ($scope) {
         $scope.hobbies = [];
         $scope.pos = null;
+        
         $scope.addHobby = function () {
             if ($scope.newHobby != null && $scope.newDesc != null) {
                 var temp = {};
@@ -32,6 +33,8 @@ angular.module('introMeApp')
         $scope.editHobby = function (index) {
             if (index != null) {
                 $scope.pos = index;
+                $scope.newHobby = $scope.hobbies[$scope.pos]['name'];
+                $scope.newDesc = $scope.hobbies[$scope.pos]['desc'];
             }
 
             if (index == null && $scope.newHobby != null && $scope.newDesc != null) {
