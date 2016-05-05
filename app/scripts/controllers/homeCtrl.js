@@ -8,7 +8,7 @@
  * Controller of the introMeApp
  */
 angular.module('introMeApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('homeCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

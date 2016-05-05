@@ -26,9 +26,10 @@ angular.module('introMeApp')
     $scope.hideEdit=function()
     {
     	$scope.editShow=!$scope.editShow;
-    	timer = $timeout(function(){
-    	    $scope.hideShow=!$scope.hideShow;
-        }, 250);
+        $scope.hideShow=!$scope.hideShow;
+    	// timer = $timeout(function(){
+    	//     $scope.hideShow=!$scope.hideShow;
+     //    }, 250);
 
     };
 
