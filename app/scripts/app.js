@@ -16,7 +16,7 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch'
-        ])
+    ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -47,9 +47,13 @@ angular
                 templateUrl: 'views/education.html',
                 controller: 'educationCtrl'
             })
-            .when('/achivements', {
+            .when('/achievements', {
                 templateUrl: '../views/achievements.html',
-                controller: 'achivementsCtrl'
+                controller: 'achievementsCtrl'
+            })
+            .when('/location', {
+                templateUrl: 'views/location.html',
+                controller: 'locationCtrl'
             })
             .otherwise({
                 redirectTo: '/'
