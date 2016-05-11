@@ -47,6 +47,10 @@ angular
                 templateUrl: 'views/education.html',
                 controller: 'educationCtrl'
             })
+            .when('/location', {
+                templateUrl: 'views/location.html',
+                controller: 'locationCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
