@@ -7,6 +7,12 @@
   background-color: #f5f5f5;
 }*/
 
+
+.list-group {
+    padding-left: 0;
+     margin-bottom: -1px;
+}
+
 a {
     color: #428BCA;
     text-decoration: none;
@@ -25,41 +31,61 @@ a:hover, a:focus {
     text-align: center;
 }
 
-.hobbyTile:nth-child(even){
+.hobbyTile:nth-child(even) {
     background-color: #368eee;
     font-family: sans-serif;
     border-radius: 15px;
 }
 
-.hobbyTile:nth-child(odd){
+.hobbyTile:nth-child(odd) {
     background-color: #e4b9e7;
     font-family: sans-serif;
     border-radius: 15px;
 }
 
-.editHobby{
+.editHobby {
     font-size: 10px;
     letter-spacing: 3px;
 }
 
-.photos{
-    display:inline-block;
-    width: 40%;
-    height: 40%;
-
-
+.photos {
+    height: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /*For Profile.html */
-.pad-up{
-  padding-top: 7px;
-  /*margin-top: 10px*/
+.pad-up {
+    padding-top: 7px;
+    /*margin-top: 10px*/
 }
 
 /*For Education.html */
 
-.blocks
-{
+.blocks {
     padding-bottom: 10px;
     padding-top: 20px;
+}
+
+.achievements {
+   padding: 20px;
+}
+
+.achievementsContents {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 15px;
+}
+
+.achievementsTile{
+    padding: 10px;
+}
+
+.navbar-collapse {
+    padding: 0 !important;
+}
+
+.nav.navbar-nav.list-group {
+    width: 100%;
+    padding: 0 !important;
 }
