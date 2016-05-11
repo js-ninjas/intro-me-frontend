@@ -8,7 +8,7 @@
  * Controller of the introMeApp
  */
 angular.module('introMeApp')
-    .controller('achivementsCtrl', function ($scope) {
+    .controller('achievementsCtrl', function ($scope) {
         
      
     });

@@ -68,17 +68,19 @@ a:hover, a:focus {
 }
 
 .achievements {
-   padding: 20px;
+   padding: 10px;
 }
 
 .achievementsContents {
-    padding-bottom: 10px;
-    padding-top: 10px;
+ /*   padding-bottom: 6px;
+    padding-top: 1px;*/
+    padding: 3px;
     border-radius: 15px;
+    font-family: sans-serif;
 }
 
 .achievementsTile{
-    padding: 10px;
+    padding: 5px;
 }
 
 .navbar-collapse {
