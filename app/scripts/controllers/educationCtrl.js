@@ -10,7 +10,7 @@ angular.module('introMeApp')
       'AngularJS',
       'Karma'
     ];
-     $scope.personInfo={company: "TCS" ,contactNo: "9876543210", email: "abcdEF@gmail.com", fName: "Mohammad",homeTown:"Hazaribagh",lName:"Hussain",location:"India"};
+     $scope.personInfo={company: "TCS" ,contactNo: "9876543210", email: "abcdEF@gmail.com", fName: "Mohammad",homeTown:"Hazaribagh",lName:"Hussain",location:"India",mDate:"May/2001",iDate:"May/2003",gDate:"July/2007",pDate:"August/2009"};
 
 $scope.showEdit=function()
     {
@@ -28,6 +28,45 @@ $scope.showEdit=function()
 
     };
 
-     
+     $scope.clear = function () {
+    $scope.dt = null;
+  };
+
+  
+    $scope.minDate = $scope.minDate ? null : new Date("01/01/1950");
+    $scope.maxDate = new Date("12/31/2023");
+
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened = true;
+  };
+  $scope.open1 = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened1 = true;
+  };
+  $scope.open2 = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened2 = true;
+  };
+  $scope.open3 = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.opened3 = true;
+  };
+
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1,
+    minMode: 'month'
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  
      
     });
