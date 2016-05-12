@@ -4,12 +4,7 @@ angular.module('introMeApp')
     .controller('educationCtrl', function ($scope) {
         $scope.hideShow=true;
     $scope.editShow=false;
-        $scope.myname="Athar";
-        $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+       
      $scope.personInfo={company: "TCS" ,contactNo: "9876543210", email: "abcdEF@gmail.com", fName: "Mohammad",homeTown:"Hazaribagh",lName:"Hussain",location:"India",mDate:"May/2001",iDate:"May/2003",gDate:"July/2007",pDate:"August/2009"};
 
 $scope.showEdit=function()
@@ -34,7 +29,11 @@ $scope.showEdit=function()
 
   
     $scope.minDate = $scope.minDate ? null : new Date("01/01/1950");
-    $scope.maxDate = new Date("12/31/2023");
+    var d = new Date();
+    var n = d.getFullYear();
+    n=n+1;
+    var m="31/December/"+n;
+    $scope.maxDate = new Date(m);
 
 
   $scope.open = function($event) {
