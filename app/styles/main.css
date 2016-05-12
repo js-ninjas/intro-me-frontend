@@ -32,13 +32,13 @@ a:hover, a:focus {
 }
 
 .hobbyTile:nth-child(even) {
-    background-color: #368eee;
+    background-color: #33A3CD;
     font-family: sans-serif;
     border-radius: 15px;
 }
 
 .hobbyTile:nth-child(odd) {
-    background-color: #e4b9e7;
+    background-color: #33A3CD;
     font-family: sans-serif;
     border-radius: 15px;
 }
@@ -90,4 +90,16 @@ a:hover, a:focus {
 .nav.navbar-nav.list-group {
     width: 100%;
     padding: 0 !important;
+}
+
+.achievementBadge{
+    padding: 1px 9px 2px;
+    font-size: 12.025px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: #ffffff;
+    background-color: #999999;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
 }

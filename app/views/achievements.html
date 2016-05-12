@@ -1,45 +1,17 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            <p class="lead text-center bg-info btn text-info center-block">Year 2011</p>
+<div class="row" ng-repeat="achievement in achievements">
+    <div class="col-md-11">
+        <p class="lead text-center bg-info btn text-info center-block">{{achievement.year}}<span class="badge pull-right progress-bar-success">{{achievement.achievementsDesc.length}}</span></p>
 
+        <div class="row achievements">
+            <div class="col-md-4 text-center achievementsTile"
+                 ng-repeat="achievementDesc in achievement.achievementsDesc">
+                <div class="bg-success achievementsContents">
+                    <h3 class="text-warning ">{{achievementDesc.achievementName}}</h3>
 
-            <div class="row achievements">
-                <div class="col-md-4 text-center achievementsTile">
-                    <div class="bg-success achievementsContents">
-                        <h3 class="text-warning ">Bike Race</h3>
-
-                        <p class="text-primary">Won 2nd place in bike race which is held in bangalore Won 2nd place in bike race which is held in bangalore</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center achievementsTile">
-                    <div class="bg-success achievementsContents">
-                        <h3 class="text-danger ">Bike Race</h3>
-
-                        <p class="text-primary">Won 2nd place in bike race which is held in bangalore</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center achievementsTile">
-                    <div class="bg-success achievementsContents">
-                        <h3 class="text-danger ">Bike Race</h3>
-
-                        <p class="text-primary">Won 2nd place in bike race which is held in bangalore</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center achievementsTile">
-                    <div class="bg-success achievementsContents">
-                        <h3 class="text-danger ">Bike Race</h3>
-
-                        <p class="text-primary">Won 2nd place in bike race which is held in bangalore</p>
-                    </div>
+                    <p class="text-primary">{{achievementDesc.description}}</p>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>
+
