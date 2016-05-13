@@ -53,7 +53,7 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.mDate}}</label>
+                <label class="lable pad-up" >{{ personInfo.mDate | date : 'MMMM-yyyy'}} </label>
               </div>
             </div>
           </div>
@@ -87,12 +87,14 @@
               <label class="col-md-3 control-label">Year of passing:</label>
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
+              
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM/yyyy" ng-model="personInfo.mDate" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'month'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datetime="MMMM-yyyy" datepicker-popup="MMMM-yyyy" ng-model="personInfo.mDate" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ></input>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
+
               </div>
             </div>
           </div>           
@@ -144,7 +146,7 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.iDate}}</label>
+                <label class="lable pad-up" >{{personInfo.iDate | date : 'MMMM-yyyy'}}</label>
               </div>
             </div>
           </div>
@@ -185,7 +187,7 @@
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM/yyyy" ng-model="personInfo.iDate" is-open="opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'month'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="personInfo.iDate" is-open="opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -237,7 +239,7 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.gDate}}</label>
+                <label class="lable pad-up" >{{personInfo.gDate | date : 'MMMM-yyyy'}}</label>
               </div>
             </div>
           </div>
@@ -278,7 +280,7 @@
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM/yyyy" ng-model="personInfo.gDate" is-open="opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'month'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="personInfo.gDate" is-open="opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -330,7 +332,7 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.pDate}}</label>
+                <label class="lable pad-up" >{{personInfo.pDate | date : 'MMMM-yyyy'}}</label>
               </div>
             </div>
           </div>
@@ -371,7 +373,7 @@
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM/yyyy" ng-model="personInfo.pDate" is-open="opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'month'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="personInfo.pDate" is-open="opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
