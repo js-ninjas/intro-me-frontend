@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('introMeApp')
-    .controller('educationCtrl', function ($scope) {
+    .controller('educationCtrl', function ($scope,$route) {
         $scope.hideShow=true;
     $scope.editShow=false;
        

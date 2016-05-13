@@ -1,21 +1,43 @@
 
 
-<div class=" col-md-12 panel-default blocks ">
+<div class=" col-md-10 panel-default blocks ">
 
   <form class="form-horizontal" role="form" ng-submit="savePersonInfo(personInfo)">
-	 <h4 class="col-md-11">Panel Heading</h5>
+	 
 	 <span class="pull-right editHobby ">
   		<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil editHobby" ng-click="showEdit()"></span></a>
 	</span>
+	<h4>Experience Detail</h4>
 <div class="container col-sm-12 panel" ng-repeat="experience in experiences">
+
   	<div class="panel panel-primary">
 	    <div class="panel-heading col-sm-12 panel " style="margin-bottom: 1px;" >
-	    	<div class="col-sm-6">Company Name:  {{experience.company}}</div>
-	    	<div class="col-sm-6">{{experience.from}} to {{experience.to}}</div>
+	    	<div class="col-sm-5"><h4>Company Name: {{experience.company}} </h4></div>
+	    	<div class="col-sm-6"><h5>{{experience.from}} to {{experience.to}}</h5></div>
+	    	<div class="col-sm-1">
+	    		<span class="pull-right  ">
+  					<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil " ng-click="showEdit()"></span></a>
+				</span>
+			</div>
 	    	
 	    </div>
-	    <div ng-repeat="pro in experiences.projects">
-		    <div class=" panel panel-body" style="margin-bottom: 1px;">{{pro.project}}</div>
+	    <div ng-repeat="pro in experience.projects">
+		    <div class=" panel panel-body" style="margin-bottom: 1px;">
+		    	<div class="col-sm-12">
+		    		<span class="col-sm-5"><h4>Project name: {{pro.project}}</h4></span>
+		    		<span class="col-sm-6">  <h5>{{pro.from}}  to  {{pro.to}}</h5></span>
+		    		<!-- <span class="col-sm-1 pull-right  ">
+  						<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil " ng-click="showEdit()"></span></a>
+					</span> -->
+		    	</div>
+
+		    	<div class="col-sm-12">
+			    	<dl>
+					     <span class="col-sm-12"><dt><h4>Desciption:</h4></dt></span>
+					    <span class="col-sm-12"><dd><p>{{pro.description}}</p></dd></span>
+					</dl>     
+	    		</div>
+		    </div>
     	</div>
 	</div>
 	

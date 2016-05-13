@@ -24,7 +24,7 @@ angular.module('introMeApp')
 	        project: "TCS",
 	        from: "March-2011",
 	        to: "May-2012",
-	        description: "hi hello"
+	        description: "hi s,dnsa,d dsalklksda laksdlkjdas ;kds;ak;dask;k sadkjsd lksdjlksda knlkdjsalkjdsa ljdlsklsda  sjh dsjh kjshdk kjshda jkhdsa kjhdsa khasdk ksadhkds khsdak kjhsdka skahdkds nslkdjlkajsdlkas lkjdlkadlsa ldlsajdljasld lkjdljsdaljdlldskjdsalkjsdlajdsa jsdkl skjdklsj dkslajlksd dsalkjsdl lkjdslkasd hello"
 	      },
 	      {
 	        project: "TCS",
