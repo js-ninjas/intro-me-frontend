@@ -46,6 +46,7 @@ a:hover, a:focus {
 .editHobby {
     font-size: 10px;
     letter-spacing: 3px;
+    margin-right: 5px;
 }
 
 .photos {
