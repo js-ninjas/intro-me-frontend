@@ -1,11 +1,66 @@
+<!--Achievements heading-->
+<div class="achievementsHeading">
+    <h3>Your Achievements</h3>
+
+    <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#addAchievement">Add your achievement</button>
+</div>
+
+<hr/>
+
+<!--Adding new achievements-->
+<div class="modal fade" id="addAchievement">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add your achievement</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-inline">
+                    <div class="row">
+
+                        <div class="input-group col-md-4 col-md-offset-1">
+                            <input type="text" class="form-control col-md-12" autofocus ng-model="achievementName"
+                                   placeholder="Achievement Name"
+                                   required>
+                        </div>
+
+                        <div class="input-group col-md-4">
+                            <input type="text" class="form-control" ng-model="achievementDesc" placeholder="Achievement Description"
+                                   required>
+                        </div>
+
+                        <div class="input-group col-md-4 col-md-offset-1">
+                            <input type="text" class="form-control col-md-12" autofocus ng-model="year"
+                                   placeholder="Achievement Year"
+                                   required>
+                        </div>
+
+                        <button type="submit" class="btn  btn-warning" data-dismiss="modal" ng-click="addAchievement()">
+                            Add Achievement</span></button>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Reading the dynamic data from controller-->
 <div class="row" ng-repeat="achievement in achievements">
     <div class="col-md-11">
-        <p class="lead text-center bg-info btn text-info center-block">{{achievement.year}}<span class="badge pull-right progress-bar-success">{{achievement.achievementsDesc.length}}</span></p>
+
+        <p class="lead text-center bg-info btn text-info center-block" ng-style="colorPicker($index,true)">
+            {{achievement.year}}<span class="badge pull-right progress-bar-danger">{{achievement.achievementsDesc.length}}</span>
+        </p>
+
 
         <div class="row achievements">
             <div class="col-md-4 text-center achievementsTile"
                  ng-repeat="achievementDesc in achievement.achievementsDesc">
-                <div class="bg-success achievementsContents">
+                <div class="bg-success achievementsContents" ng-style="colorPicker($index,false)">
                     <h3 class="text-warning ">{{achievementDesc.achievementName}}</h3>
 
                     <p class="text-primary">{{achievementDesc.description}}</p>

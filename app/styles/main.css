@@ -7,10 +7,9 @@
   background-color: #f5f5f5;
 }*/
 
-
 .list-group {
     padding-left: 0;
-     margin-bottom: -1px;
+    margin-bottom: -1px;
 }
 
 a {
@@ -69,19 +68,18 @@ a:hover, a:focus {
 }
 
 .achievements {
-   padding: 10px;
+    padding: 10px;
 }
 
 .achievementsContents {
- /*   padding-bottom: 6px;
-    padding-top: 1px;*/
     padding: 3px;
     border-radius: 15px;
     font-family: sans-serif;
 }
 
-.achievementsTile{
+.achievementsTile {
     padding: 5px;
+
 }
 
 .navbar-collapse {
@@ -93,14 +91,8 @@ a:hover, a:focus {
     padding: 0 !important;
 }
 
-.achievementBadge{
-    padding: 1px 9px 2px;
-    font-size: 12.025px;
-    font-weight: bold;
-    white-space: nowrap;
-    color: #ffffff;
-    background-color: #999999;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
+.achievementsHeading {
+    display: flex;
+    justify-content: space-between;
+    color:#32D9D2;
 }
