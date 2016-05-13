@@ -15,10 +15,13 @@ $scope.showEdit=function()
     
     $scope.hideEdit=function()
     {
+
         $scope.editShow=!$scope.editShow;
         $scope.hideShow=!$scope.hideShow;
+        $route.reload();
         // timer = $timeout(function(){
         //     $scope.hideShow=!$scope.hideShow;
+        
      //    }, 250);
 
     };
@@ -59,7 +62,7 @@ $scope.showEdit=function()
 
 
   $scope.dateOptions = {
-    formatYear: 'yy',
+    formatYear: 'yyyy',
     startingDay: 1,
     minMode: 'month'
   };
