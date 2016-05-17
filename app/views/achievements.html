@@ -45,12 +45,11 @@
 
                         <button type="submit" ng-show="addEditview" class="btn  btn-warning" data-dismiss="modal"
                                 ng-click="addAchievement()">
+
                             {{addEdit}} Achievement</span></button>
                             <button type="submit" ng-show="!addEditview" class="btn  btn-warning" data-dismiss="modal"
                                 ng-click="addAchievement()">
                             {{addEdit}} Achievement</span></button>
-
-
                     </div>
                 </form>
             </div>
@@ -81,7 +80,7 @@
                     <a data-toggle="modal" data-target="#addAchievement"
                        ng-click="editAchievement($index,yearIndex)"><span
                             class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="removeAchievement($index,achievement.year)"><span
+                    <a ng-click="removeAchievement($index,yearIndex)"><span
                             class="glyphicon glyphicon-trash"></span></a>
 
                 </div>

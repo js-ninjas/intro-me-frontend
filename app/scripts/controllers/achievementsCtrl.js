@@ -12,8 +12,11 @@ angular.module('introMeApp')
         $scope.headingBgColors = ['#F8DDA1', '#B9A593'];
         $scope.contentBgColors = ['#81C6DD'];
         $scope.achieveId = 0;
+        $scope.btnName = 'Add';
+
         $scope.achievements = [/*{
          year: 2012,
+         date:
          achievementsDesc: [{
          'achieveId': 1,
          'achievementName': "achievementName",
@@ -112,6 +115,7 @@ angular.module('introMeApp')
             $scope.year = null;
         };
 
+
         $scope.editAchievement = function (index, yearIndex) {
                 console.log(index);
                 $scope.addEdit="Edit";
@@ -120,20 +124,16 @@ angular.module('introMeApp')
                 $scope.achievementDesc = $scope.achievements[yearIndex].achievementsDesc[index].description;
                 // console.log($scope.achievements[yearIndex].achievementsDesc[index]);
                 console.log($scope.achievements[yearIndex].year);
-                $scope.year=$scope.achievements[yearIndex].year;
+                var a="01/01/"+$scope.achievements[yearIndex].year;
+                $scope.year=new Date(a).formats("MMMM-YYYY");
                 $scope.addEditview=false;
         };
 
         $scope.removeAchievement = function (index, achieveYear) {
-            $scope.achievements.forEach(function (achievement) {
-                if (achievement.year == achieveYear) {
-                    achievement.achievementsDesc.splice(index, 1);
-                    if (achievement.achievementsDesc.length == 0) {
-                        $scope.achievements.splice(0, 1)
-                    }
-                }
-            });
-
+            $scope.achievements[achieveYear]['achievementsDesc'].splice(index, 1);
+            if ($scope.achievements[achieveYear]['achievementsDesc'].length == 0) {
+                $scope.achievements.splice(0, 1)
+            }
         };
 
         /*date picker plugin controllers*/
