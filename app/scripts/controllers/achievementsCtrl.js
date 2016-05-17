@@ -64,6 +64,7 @@ angular.module('introMeApp')
                         var tempObj = {};
                         tempObj['year'] = year;
                         tempObj['achievementsDesc'] = achievementsDesc;
+                        resetNgModal();
                         $scope.achievements.push(tempObj);
                         sortYearOfAchievement();
                     }
@@ -73,6 +74,7 @@ angular.module('introMeApp')
                         temp["achieveId"] = ++$scope.achieveId;
                         $scope.achievements[pos]['achievementsDesc'].push(temp);
                         sortYearOfAchievement();
+                        resetNgModal();
                     }
                 }
                 else {
@@ -87,6 +89,7 @@ angular.module('introMeApp')
                     tempObj['achievementsDesc'] = achievementsDesc;
                     $scope.achievements.push(tempObj);
                     sortYearOfAchievement();
+                    resetNgModal();
                 }
             }
             else {
@@ -94,8 +97,14 @@ angular.module('introMeApp')
             }
         };
 
-        $scope.editAchievement = function (index, achieveId, achieveYear) {
+        function resetNgModal() {
+            $scope.achievementName = null;
+            $scope.achievementDesc = null;
+            $scope.year = null;
+        };
 
+        $scope.editAchievement = function (index, achieveId, achieveYear) {
+console.log("here in edit")
         };
 
         $scope.removeAchievement = function (index, achieveYear) {
