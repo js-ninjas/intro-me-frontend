@@ -95,34 +95,19 @@ angular.module('introMeApp')
         };
 
         $scope.editAchievement = function (index, achieveId, achieveYear) {
-            $scope.achievements.forEach(function (achievement) {
-                if (achievement.year == achieveYear) {
-                    achievement.achievementsDesc.forEach(function (achievementDesc, index) {
-                        if (achievementDesc.achieveId == achieveId) {
-                            achievement.achievementsDesc.splice(index, 1);
 
-                            if (achievement.achievementsDesc.length == 0) {
-                                $scope.achievements.splice(0, 1)
-                            }
-                        }
-                    });
-                }
-            });
         };
 
-        $scope.removeAchievement = function (index, achieveId, achieveYear) {
+        $scope.removeAchievement = function (index, achieveYear) {
             $scope.achievements.forEach(function (achievement) {
                 if (achievement.year == achieveYear) {
-                    achievement.achievementsDesc.forEach(function (achievementDesc, index) {
-                        if (achievementDesc.achieveId == achieveId) {
-                            achievement.achievementsDesc.splice(index, 1);
-                            if (achievement.achievementsDesc.length == 0) {
-                                $scope.achievements.splice(0, 1)
-                            }
-                        }
-                    });
+                    achievement.achievementsDesc.splice(index, 1);
+                    if (achievement.achievementsDesc.length == 0) {
+                        $scope.achievements.splice(0, 1)
+                    }
                 }
             });
+
         };
 
         /*date picker plugin controllers*/

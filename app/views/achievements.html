@@ -57,7 +57,7 @@
 </div>
 
 <!--Reading the dynamic data from controller-->
-<div class="row" ng-repeat="achievement in achievements">
+<div class="row" ng-repeat="achievement in achievements" ng-init="yearIndex=$index">
     <div class="col-md-11">
 
         <p class="lead text-center bg-info btn text-info center-block" ng-style="colorPicker($index,true)">
@@ -73,10 +73,10 @@
                     <h3 class="text-warning ">{{achievementDesc.achievementName}}</h3>
 
                     <p class="text-primary">{{achievementDesc.description}}</p>
-
-                    <a data-toggle="modal" data-target="#addAchievement" ng-click="editAchievement($index,achievementDesc.achieveId,achievement.year)"><span
+                    <a data-toggle="modal" data-target="#addAchievement"
+                       ng-click="editAchievement($index,yearIndex)"><span
                             class="glyphicon glyphicon-pencil"></span></a>
-                    <a ng-click="removeAchievement($index,achievementDesc.achieveId,achievement.year)"><span
+                    <a ng-click="removeAchievement($index,achievement.year)"><span
                             class="glyphicon glyphicon-trash"></span></a>
 
                 </div>
