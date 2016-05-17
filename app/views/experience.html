@@ -1,60 +1,185 @@
 
-
-<div class=" col-md-10 panel-default blocks ">
-
-  <form class="form-horizontal" role="form" ng-submit="savePersonInfo(personInfo)">
-	 
-	 <span class="pull-right editHobby ">
-  		<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil editHobby" ng-click="showEdit()"></span></a>
-	</span>
-	<h4>Experience Detail</h4>
-<div class="container col-sm-12 panel" ng-repeat="experience in experiences">
-
-  	<div class="panel panel-primary">
-	    <div class="panel-heading col-sm-12 panel " style="margin-bottom: 1px;" >
-	    	<div class="col-sm-5"><h4>Company Name: {{experience.company}} </h4></div>
-	    	<div class="col-sm-6"><h5>{{experience.from}} to {{experience.to}}</h5></div>
-	    	<div class="col-sm-1">
-	    		<span class="pull-right  ">
-  					<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil " ng-click="showEdit()"></span></a>
-				</span>
-			</div>
-	    	
-	    </div>
-	    <div ng-repeat="pro in experience.projects">
-		    <div class=" panel panel-body" style="margin-bottom: 1px;">
-		    	<div class="col-sm-12">
-		    		<span class="col-sm-5"><h4>Project name: {{pro.project}}</h4></span>
-		    		<span class="col-sm-6">  <h5>{{pro.from}}  to  {{pro.to}}</h5></span>
-		    		<!-- <span class="col-sm-1 pull-right  ">
-  						<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil " ng-click="showEdit()"></span></a>
-					</span> -->
-		    	</div>
-
-		    	<div class="col-sm-12">
-			    	<dl>
-					     <span class="col-sm-12"><dt><h4>Desciption:</h4></dt></span>
-					    <span class="col-sm-12"><dd><p>{{pro.description}}</p></dd></span>
-					</dl>     
-	    		</div>
+<h4>Experience Details</h4>
+<div class=" col-md-10 panel-default blocks " >
+	<div class="container col-sm-12 panel" ng-repeat="experience in experiences" ng-init="outerIndex=$index">
+		<div class="panel panel-primary">
+		    <div class="panel-heading col-sm-12 panel " style="margin-bottom: 1px;" >
+		    	<div class="col-sm-5"><h4>Company Name: {{experience.company}} </h4></div>
+		    	<div class="col-sm-4"><h5>{{experience.from | date : 'MMMM-yyyy' }} to {{experience.to | date : 'MMMM-yyyy'}}</h5></div>
+		    	<div class="col-sm-3" style="text-align: right; padding-top: 8px;">
+		    		<span >
+	  					<a href="" data-toggle="modal"  data-target="#addProjectDetail" style="color:white; padding-left: 4px;"  ng-click="addProject($index)"><span class="glyphicon glyphicon-plus " ></span>Add Project</a>
+	  					<a href="" data-toggle="modal" data-target="#addeditCompany" style="color:white; padding-left: 4px;" ng-click="editExperiance($index)" >
+	  						<span class="glyphicon glyphicon-pencil hover " ></span>Edit
+	  					</a>
+	  					<a href="" data-toggle="modal" data-target="#deleteCompany" style=" color:white; padding-left: 4px;" ng-click="deleteExperiance(outerIndex)">
+	  						<span class="glyphicon glyphicon-trash " ></span>Delete
+	  					</a>
+					</span>
+				</div>
 		    </div>
-    	</div>
-	</div>
-	
-</div>
-	  <!-- Submit Button -->
-	  <div class="form-group " ng-show="editShow">
-	    <label class="col-md-3 control-label"></label>
-	    <div class="col-md-8">
-	      <input type="submit" class="btn btn-primary" value="Save Changes">
-	      <input type="reset" class="btn btn-default" ng-click="hideEdit()" value="Cancel">
+		    <div ng-repeat="pro in experience.projects" >
+			    <div class=" panel panel-body" style="margin-bottom: 1px;">
+			    	<div class="col-sm-12">
+			    		<span class="col-sm-5"><h4>Project name: {{pro.project}}</h4></span>
+			    		<span class="col-sm-4">  <h5>{{pro.from | date : 'MMMM-yyyy'}}  to  {{pro.to | date : 'MMMM-yyyy'}}</h5></span>
+			    		<!-- <span class="col-sm-1 pull-right  ">
+	  						<a data-toggle="modal" ><span class="glyphicon glyphicon-pencil " ng-click="showEdit()"></span></a>
+						</span> -->
+						<div class="col-sm-3" style="text-align: right; padding-top: 8px;">
+				    		<span >
+			  					
+			  					<a href="" data-toggle="modal" data-target="#addProjectDetail" style="padding-left: 4px;" ng-click="editProject($index,outerIndex)">
+			  						<span class="glyphicon glyphicon-pencil hover " ></span>
+			  					</a>
+			  					<a href="" data-toggle="modal" data-target="#deleteCompany" style="  padding-left: 4px;" ng-click="deleteProject($index,outerIndex)">
+			  						<span class="glyphicon glyphicon-trash " ></span>
+			  					</a>
+							</span>
+						</div>
+
+			    	</div>
+
+			    	<div class="col-sm-12">
+				    	<dl>
+						     <span class="col-sm-12"><dt><h4>Desciption:</h4></dt></span>
+						    <span class="col-sm-12"><dd><p>{{pro.description}}</p></dd></span>
+						</dl>     
+		    		</div>
+
+			    </div>
+	    	</div>
 	    </div>
-	  </div>
-	
+	</div>
+		
+	<div style="text-align: center;">
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addeditCompany" ><span class="glyphicon glyphicon-plus" ng-click="addExperience()"></span>Add Company</button>
+	</div> 
+</div>
 
-  </form>
+<!-- Add Project to experience -->
+<div class="modal fade" id="addProjectDetail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{project}} Project</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-inline">
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <input type="text" class="form-control col-md-12" autofocus ng-model="projectData.project" placeholder="Project Name"
+                                   required></input>
+                        </div>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <div class="input-group col-md-6">
+                            <!-- <p class="input-group col-md-6"> -->
+                            	<input type="text" class="form-control" placeholder="Project Start" datepicker-popup="MMMM-yyyy"
+                                   ng-model="projectData.from" is-open="opened" min-date="minDateProject"
+                                   max-date="maxDateProject" datepicker-options="dateOptions" datepicker-mode="'month'"
+                                   date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+              						<span class="input-group-btn">
+                						<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              						</span>
+                        	<!-- </p> -->
+                        	</div>
+                        	<div class="input-group col-md-6">
+                        	<!-- <p class="input-group col-md-6" style="text-align: right;"> -->
+                            	<input type="text" class="form-control" placeholder="Project Start" datepicker-popup="MMMM-yyyy"
+                                   ng-model="projectData.to" is-open="opened1" min-date="minDateProject"
+                                   max-date="maxDateProject" datepicker-options="dateOptions" datepicker-mode="'month'"
+                                   date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+              						<span class="input-group-btn">
+                						<button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              						</span>
+                        	<!-- </p> -->
+                        	</div>
+                        </div>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <textarea class="form-control" rows="5" id="comment" ng-model="projectData.description" placeholder="Description" required></textarea>
+                        </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn  btn-success" data-dismiss="modal" ng-click="saveUpdateProject(projectData)">{{projectBtn}}</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit  experience -->
+
+<div class="modal fade" id="addeditCompany">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{project}} Company Detail</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-inline">
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <input type="text" class="form-control col-md-12" autofocus ng-model="experinceData.company" placeholder="Project Name"
+                                   required>
+                        </div>
+                        <div class="input-group col-md-10 col-md-offset-1">
+                            <div class="input-group col-md-6">
+                            <!-- <p class="input-group col-md-6"> -->
+                            	<input type="text" class="form-control" placeholder="Project Start" datepicker-popup="MMMM-yyyy"
+                                   ng-model="experinceData.from" is-open="opened" min-date="minDate"
+                                   max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'month'"
+                                   date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+              						<span class="input-group-btn">
+                						<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              						</span>
+                        	<!-- </p> -->
+                        	</div>
+                        	<div class="input-group col-md-6">
+                        	<!-- <p class="input-group col-md-6" style="text-align: right;"> -->
+                            	<input type="text" class="form-control" placeholder="Project Start" datepicker-popup="MMMM-yyyy"
+                                   ng-model="experinceData.to" is-open="opened1" min-date="minDate"
+                                   max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'month'"
+                                   date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+              						<span class="input-group-btn">
+                						<button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              						</span>
+                        	<!-- </p> -->
+                        	</div>
+                        </div>
+                        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn  btn-success" data-dismiss="modal" ng-click="saveUpdateExprience(experinceData)">{{projectBtn}}</span></button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
+
+<!-- Delete whole experince -->
+<div class="modal fade" id="deleteCompany">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Company !!!..</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-inline">
+                        <div class="input-group col-md-5 col-md-offset-1">
+                            <p>
+                            Are you sure !!!
+                            </p>
+                        </div>
+                        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn  btn-success" data-dismiss="modal" ng-click="delete()">Delete</span></button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
