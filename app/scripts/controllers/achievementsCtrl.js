@@ -21,6 +21,15 @@ angular.module('introMeApp')
          }]
          }*/];
 
+         // My variables
+         $scope.addEdit="Add";
+         $scope.addEditview=true;
+         $scope.addachiv=function()
+         {
+             $scope.addEdit="Add";
+             $scope.addEditview=true;
+         };
+
         // use slice() to copy the array and not just make a reference
         function sortYearOfAchievement() {
             $scope.achievements = $scope.achievements.slice(0);
@@ -103,8 +112,16 @@ angular.module('introMeApp')
             $scope.year = null;
         };
 
-        $scope.editAchievement = function (index, achieveId, achieveYear) {
-console.log("here in edit")
+        $scope.editAchievement = function (index, yearIndex) {
+                console.log(index);
+                $scope.addEdit="Edit";
+                $scope.achievementName = $scope.achievements[yearIndex].achievementsDesc[index].achievementName;
+
+                $scope.achievementDesc = $scope.achievements[yearIndex].achievementsDesc[index].description;
+                // console.log($scope.achievements[yearIndex].achievementsDesc[index]);
+                console.log($scope.achievements[yearIndex].year);
+                $scope.year=$scope.achievements[yearIndex].year;
+                $scope.addEditview=false;
         };
 
         $scope.removeAchievement = function (index, achieveYear) {

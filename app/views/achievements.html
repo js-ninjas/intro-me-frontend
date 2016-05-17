@@ -2,7 +2,7 @@
 <div class="achievementsHeading">
     <h3>Your Achievements</h3>
 
-    <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#addAchievement">Add your achievement</button>
+    <button class="btn btn-info btn-lg" data-toggle="modal" ng-click="addachiv()" data-target="#addAchievement">Add your achievement</button>
 </div>
 
 <hr/>
@@ -12,7 +12,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add your achievement</h4>
+                <h4 class="modal-title">{{addEdit}} your achievement</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-inline">
@@ -43,9 +43,12 @@
                             </p>
                         </div>
 
-                        <button type="submit" class="btn  btn-warning" data-dismiss="modal"
+                        <button type="submit" ng-show="addEditview" class="btn  btn-warning" data-dismiss="modal"
                                 ng-click="addAchievement()">
-                            Add Achievement</span></button>
+                            {{addEdit}} Achievement</span></button>
+                            <button type="submit" ng-show="!addEditview" class="btn  btn-warning" data-dismiss="modal"
+                                ng-click="addAchievement()">
+                            {{addEdit}} Achievement</span></button>
 
 
                     </div>

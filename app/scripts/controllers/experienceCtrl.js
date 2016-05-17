@@ -12,6 +12,7 @@ angular.module('introMeApp')
        
      $scope.project="Add";
      $scope.projectBtn="Save";
+     $scope.del="Company";
      $scope.childIndex=null;
      $scope.parentIndex=null;
      $scope.maxDateProject=null;
@@ -163,7 +164,7 @@ $scope.addExperience=function()
  	$scope.projectBtn="Save";
 };
 
-$scope.editExperiance=function(index)
+$scope.editExperiance=function(index=null)
 {	
 	$scope.parentIndex=index;
 	$scope.project="Edit";
@@ -202,12 +203,14 @@ $scope.saveUpdateExprience=function(data)
 // DELETE PROJECT OR EXPERIANCE
 $scope.deleteExperiance=function(index)
 {
+	$scope.del="Company";
 	$scope.childIndex=null;
  	$scope.parentIndex=index; 
     console.log(index);
 };
 $scope.deleteProject=function(index,parent)
 {
+	$scope.del="Project";
 	$scope.childIndex=index;
  	$scope.parentIndex=parent; 
 };
@@ -250,9 +253,14 @@ $scope.delete=function()
 
 };
 
+  //tooltip
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+    });
+});
 
  //datepicker start
-
         $scope.clear = function () {
             $scope.dt = null;
         };
