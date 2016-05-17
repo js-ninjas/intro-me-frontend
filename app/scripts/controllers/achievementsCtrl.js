@@ -12,8 +12,11 @@ angular.module('introMeApp')
         $scope.headingBgColors = ['#F8DDA1', '#B9A593'];
         $scope.contentBgColors = ['#81C6DD'];
         $scope.achieveId = 0;
+        $scope.btnName = 'Add';
+
         $scope.achievements = [/*{
          year: 2012,
+         date:
          achievementsDesc: [{
          'achieveId': 1,
          'achievementName': "achievementName",
@@ -103,20 +106,23 @@ angular.module('introMeApp')
             $scope.year = null;
         };
 
-        $scope.editAchievement = function (index, achieveId, achieveYear) {
-console.log("here in edit")
+        $scope.editAchievement = function (index, achieveYear) {
+            console.log("here in edit")
+            console.log($scope.achievements[achieveYear]['achievementsDesc'][index]['achievementName'])
+            console.log($scope.achievements[achieveYear]['achievementsDesc'][index]['description'])
+            console.log($scope.achievements[achieveYear]['year'])
+            console.log(achieveYear)
+            $scope.btnName = 'Edit';
+            $scope.achievementName = $scope.achievements[achieveYear]['achievementsDesc'][index]['achievementName'];
+            $scope.achievementDesc = $scope.achievements[achieveYear]['achievementsDesc'][index]['description'];
+            $scope.year = null;
         };
 
         $scope.removeAchievement = function (index, achieveYear) {
-            $scope.achievements.forEach(function (achievement) {
-                if (achievement.year == achieveYear) {
-                    achievement.achievementsDesc.splice(index, 1);
-                    if (achievement.achievementsDesc.length == 0) {
-                        $scope.achievements.splice(0, 1)
-                    }
-                }
-            });
-
+            $scope.achievements[achieveYear]['achievementsDesc'].splice(index, 1);
+            if ($scope.achievements[achieveYear]['achievementsDesc'].length == 0) {
+                $scope.achievements.splice(0, 1)
+            }
         };
 
         /*date picker plugin controllers*/
