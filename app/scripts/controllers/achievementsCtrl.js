@@ -11,7 +11,8 @@ angular.module('introMeApp')
     .controller('achievementsCtrl', function ($scope) {
         $scope.headingBgColors = ['#F8DDA1', '#B9A593'];
         $scope.contentBgColors = ['#81C6DD'];
-        $scope.achieveId = 0;
+        $scope.editIndex = null;
+        $scope.editYearIndex = null;
         $scope.btnName = 'Add';
 
         $scope.achievements = [/*{
@@ -24,14 +25,13 @@ angular.module('introMeApp')
          }]
          }*/];
 
-         // My variables
-         $scope.addEdit="Add";
-         $scope.addEditview=true;
-         $scope.addachiv=function()
-         {
-             $scope.addEdit="Add";
-             $scope.addEditview=true;
-         };
+        // My variables
+        $scope.addEdit = "Add";
+        $scope.addEditview = true;
+        $scope.addachiv = function () {
+            $scope.addEdit = "Add";
+            $scope.addEditview = true;
+        };
 
         // use slice() to copy the array and not just make a reference
         function sortYearOfAchievement() {
@@ -53,9 +53,19 @@ angular.module('introMeApp')
             }
         };
 
+        function buildRawDate(date) {
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            var tempDate = new Date(date);
+            var month = tempDate.getMonth();
+            var year = tempDate.getFullYear();
+            return monthNames[month] + "/" + year;
+        }
+
         $scope.addAchievement = function () {
             var year = new Date($scope.year).getFullYear();
-
+            var rawDate = buildRawDate($scope.year);
             if ($scope.achievementName != null && $scope.achievementDesc != null) {
                 var temp = {};
                 var pos = -1;
@@ -71,21 +81,22 @@ angular.module('introMeApp')
                         var achievementsDesc = [];
                         newObj['achievementName'] = $scope.achievementName;
                         newObj['description'] = $scope.achievementDesc;
-                        newObj['achieveId'] = ++$scope.achieveId;
+                        newObj['rawDate'] = rawDate;
                         achievementsDesc.push(newObj);
                         var tempObj = {};
                         tempObj['year'] = year;
+                        // tempObj['rawDate'] = rawDate;
                         tempObj['achievementsDesc'] = achievementsDesc;
-                        resetNgModal();
                         $scope.achievements.push(tempObj);
-                        sortYearOfAchievement();
+                        //sortYearOfAchievement();
+                        resetNgModal();
                     }
                     else {
                         temp["achievementName"] = $scope.achievementName;
                         temp["description"] = $scope.achievementDesc;
-                        temp["achieveId"] = ++$scope.achieveId;
+                        temp["rawDate"] = rawDate;
                         $scope.achievements[pos]['achievementsDesc'].push(temp);
-                        sortYearOfAchievement();
+                        //sortYearOfAchievement();
                         resetNgModal();
                     }
                 }
@@ -94,13 +105,13 @@ angular.module('introMeApp')
                     var achievementsDesc = [];
                     newObj['achievementName'] = $scope.achievementName;
                     newObj['description'] = $scope.achievementDesc;
-                    newObj['achieveId'] = ++$scope.achieveId;
+                    newObj['rawDate'] = rawDate;
                     achievementsDesc.push(newObj);
                     var tempObj = {};
                     tempObj['year'] = year;
                     tempObj['achievementsDesc'] = achievementsDesc;
                     $scope.achievements.push(tempObj);
-                    sortYearOfAchievement();
+                    //sortYearOfAchievement();
                     resetNgModal();
                 }
             }
@@ -113,23 +124,37 @@ angular.module('introMeApp')
             $scope.achievementName = null;
             $scope.achievementDesc = null;
             $scope.year = null;
+
+            $scope.editIndex = null;
+            $scope.editYearIndex = null;
+            $scope.achievementName = null;
+            $scope.achievementDesc = null;
         };
 
 
-        $scope.editAchievement = function (index, yearIndex) {
-                console.log(index);
-                $scope.addEdit="Edit";
-                $scope.achievementName = $scope.achievements[yearIndex].achievementsDesc[index].achievementName;
+        $scope.setEditValues = function (index, yearIndex) {
+            $scope.addEdit = "Edit";
+            $scope.editIndex = index;
+            $scope.editYearIndex = yearIndex;
+            $scope.achievementName = $scope.achievements[yearIndex].achievementsDesc[index].achievementName;
+            $scope.achievementDesc = $scope.achievements[yearIndex].achievementsDesc[index].description;
+            console.log("YEAR ISSYE INDEX " + yearIndex)
+            console.log($scope.achievements[yearIndex])
+            $scope.year = $scope.achievements[yearIndex]['achievementsDesc'][index]['rawDate'];//$scope.achievements[yearIndex]['rawDate'];
+            $scope.addEditview = false;
+        };
 
-                $scope.achievementDesc = $scope.achievements[yearIndex].achievementsDesc[index].description;
-                // console.log($scope.achievements[yearIndex].achievementsDesc[index]);
-                console.log($scope.achievements[yearIndex].year);
-                var a="01/01/"+$scope.achievements[yearIndex].year;
-                $scope.year=new Date(a).formats("MMMM-YYYY");
-                $scope.addEditview=false;
+        $scope.editAchievement = function () {
+            $scope.achievements[$scope.editYearIndex]['achievementsDesc'][$scope.editIndex]['achievementName'] = $scope.achievementName;
+            $scope.achievements[$scope.editYearIndex]['achievementsDesc'][$scope.editIndex]['description'] = $scope.achievementDesc;
+            $scope.achievements[$scope.editYearIndex]['achievementsDesc'][$scope.editIndex]['rawDate'] = buildRawDate($scope.year);
+            $scope.achievements[$scope.editYearIndex]['year'] = new Date($scope.year).getFullYear();
+            resetNgModal();
         };
 
         $scope.removeAchievement = function (index, achieveYear) {
+            console.log("YEAR achieveYear INDEX " + achieveYear)
+            console.log("YEAR achieveYear INDEX " + index)
             $scope.achievements[achieveYear]['achievementsDesc'].splice(index, 1);
             if ($scope.achievements[achieveYear]['achievementsDesc'].length == 0) {
                 $scope.achievements.splice(0, 1)

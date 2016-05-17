@@ -2,7 +2,9 @@
 <div class="achievementsHeading">
     <h3>Your Achievements</h3>
 
-    <button class="btn btn-info btn-lg" data-toggle="modal" ng-click="addachiv()" data-target="#addAchievement">Add your achievement</button>
+    <button class="btn btn-info btn-lg" data-toggle="modal" ng-click="addachiv()" data-target="#addAchievement">Add your
+        achievement
+    </button>
 </div>
 
 <hr/>
@@ -47,8 +49,8 @@
                                 ng-click="addAchievement()">
 
                             {{addEdit}} Achievement</span></button>
-                            <button type="submit" ng-show="!addEditview" class="btn  btn-warning" data-dismiss="modal"
-                                ng-click="addAchievement()">
+                        <button type="submit" ng-show="!addEditview" class="btn  btn-warning" data-dismiss="modal"
+                                ng-click="editAchievement()">
                             {{addEdit}} Achievement</span></button>
                     </div>
                 </form>
@@ -78,11 +80,10 @@
 
                     <p class="text-primary">{{achievementDesc.description}}</p>
                     <a data-toggle="modal" data-target="#addAchievement"
-                       ng-click="editAchievement($index,yearIndex)"><span
+                       ng-click="setEditValues($index,yearIndex)"><span
                             class="glyphicon glyphicon-pencil"></span></a>
                     <a ng-click="removeAchievement($index,yearIndex)"><span
                             class="glyphicon glyphicon-trash"></span></a>
-
                 </div>
             </div>
 
