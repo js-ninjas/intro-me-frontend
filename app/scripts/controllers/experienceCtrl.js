@@ -17,7 +17,10 @@ angular.module('introMeApp')
      $scope.parentIndex=null;
      $scope.maxDateProject=null;
      $scope.minDateProject=null;
+
+     $scope.months=[ 'January','February','March','April','May','June','July' ,'August','September','October','November','December']
     //Experiance JSON
+    	
     $scope.experiences =[
 	  {
 	    company: "TCS",
@@ -111,7 +114,7 @@ $scope.addProject=function(index){
 	$scope.parentIndex=index;
     var d= $scope.experiences[index].from;
     var dd= $scope.experiences[index].to;
- $scope.minDateProject = new Date(d);
+    $scope.minDateProject = new Date(d);
 	$scope.maxDateProject= new Date(dd);
    
     //Experiance JSON
@@ -132,8 +135,14 @@ $scope.editProject=function(index,parent){
 
 	$scope.minDateProject = $scope.minDateProject ? null : new Date("01/March/2011");
 	$scope.maxDateProject=$scope.minDateProject ? null : new Date(dd);
-   
-
+ //    var a=$scope.experiences[parent].projects[index].to;
+ //    var b=$scope.experiences[parent].projects[index].from;
+ //    console.log(new Date(a));
+ //    console.log(new Date(b));
+ //    a= $scope.months[new Date(a).getMonth()]+"-"+ new Date(a).getFullYear();
+ //    b=$scope.months[new Date(b).getMonth()]+"-"+ new Date(b).getFullYear();
+	//  $scope.experiences[parent].projects[index].to= a;
+	// $scope.experiences[parent].projects[index].from=b;
  $scope.projectData=$scope.experiences[parent].projects[index];
  console.log(index,parent);
 };
@@ -144,13 +153,20 @@ $scope.saveUpdateProject=function(data)
 	 if($scope.childIndex==null)
 	 {
 	 	// Save New values 
+	 	data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
+	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
+
 	 	$scope.experiences[$scope.parentIndex].projects.push(data);
 	 	console.log("Savin Values !!!!");
+	 	console.log(data);
 	 }
 	 else
 	 {
 	 	// update values
+	 	data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
+	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
 	 	$scope.experiences[$scope.parentIndex].projects[$scope.childIndex]=data;
+	 	console.log(data.from+"  to "+data.to);
 	 	console.log("Updating Values !!!!");
 	 }
  	$scope.childIndex=null;
@@ -179,6 +195,8 @@ $scope.saveUpdateExprience=function(data)
 	if($scope.parentIndex==null)
 	{
 		// Save New Experience 
+		data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
+	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
 		var temp={};
 		temp['company']=data.company;
 		temp['from']=data.from;
@@ -191,6 +209,8 @@ $scope.saveUpdateExprience=function(data)
 	else
 	{
 		// update Experience
+		data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
+	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
 		$scope.experiences[$scope.parentIndex]=data;
 	 	console.log("Updating Values !!!!");
 	 	console.log(data);
