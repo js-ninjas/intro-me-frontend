@@ -180,7 +180,7 @@ $scope.addExperience=function()
  	$scope.projectBtn="Save";
 };
 
-$scope.editExperiance=function(index=null)
+$scope.editExperiance=function(index)
 {	
 	$scope.parentIndex=index;
 	$scope.project="Edit";
