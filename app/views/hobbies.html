@@ -22,6 +22,7 @@
         <div class="col-md-4 thumbnail hobbyTile" ng-model="hobby" ng-repeat="hobby in hobbies">
             <h1 class="hobbies"> {{hobby.name}}</h1>
             <p class="hobbies"> {{hobby.desc}}</p>
+            <p class="hobbies"> {{nodejsVal}}</p>
             <span class="pull-right editHobby">
                 <a data-toggle="modal" data-target="#editHobby" ng-click="editHobby($index)"><span class="glyphicon glyphicon-pencil editHobby"></span></a>
                 <a ng-click="removeHobby($index)"><span class="glyphicon glyphicon-trash editHobby"></span></a>

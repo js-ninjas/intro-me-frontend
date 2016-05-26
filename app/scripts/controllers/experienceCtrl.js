@@ -8,7 +8,7 @@
  * Controller of the introMeApp
  */
 angular.module('introMeApp')
-  .controller('experienceCtrl', function ($scope,$route) {
+  .controller('experienceCtrl', function ($scope,$route,$http) {
        
      $scope.project="Add";
      $scope.projectBtn="Save";
@@ -21,83 +21,27 @@ angular.module('introMeApp')
      $scope.months=[ 'January','February','March','April','May','June','July' ,'August','September','October','November','December']
     //Experiance JSON
     	
-    $scope.experiences =[
-	  {
-	    company: "TCS",
-	    from: "March-2011",
-	    to: "May-2014",
-	    projects: [
-	      {
-	        project: "TCS",
-	        from: "March-2011",
-	        to: "May-2012",
-	        description: "hi s,dnsa,d dsalklksda laksdlkjdas ;kds;ak;dask;k sadkjsd lksdjlksda knlkdjsalkjdsa ljdlsklsda  sjh dsjh kjshdk kjshda jkhdsa kjhdsa khasdk ksadhkds khsdak kjhsdka skahdkds nslkdjlkajsdlkas lkjdlkadlsa ldlsajdljasld lkjdljsdaljdlldskjdsalkjsdlajdsa jsdkl skjdklsj dkslajlksd dsalkjsdl lkjdslkasd hello"
-	      },
-	      {
-	        project: "TCS",
-	        from: "June-2013",
-	        to: "May-2014",
-	        description: "hi hello"
-	      },
-	      {
-	        project: "TCS",
-	        from: "July-2014",
-	        to: "May-2015",
-	        description: "hi hello"
-	      }
-	    ]
-	  },
-	  {
-	    company: "McKinsey",
-	    from: "March-2011",
-	    to: "May-2014",
-	    projects: [
-	      {
-	        project: "TCS",
-	        from: "March-2011",
-	        to: "May-2012",
-	        description: "hi hello"
-	      },
-	      {
-	        project: "TCS",
-	        from: "June-2013",
-	        to: "May-2014",
-	        description: "hi hello"
-	      },
-	      {
-	        project: "TCS",
-	        from: "July-2014",
-	        to: "May-2015",
-	        description: "hi hello"
-	      }
-	    ]
-	  },
-	  {
-	    company: "Infosys",
-	    from: "March-2011",
-	    to: "May-2014",
-	    projects: [
-	      {
-	        project: "TCS",
-	        from: "March-2011",
-	        to: "May-2012",
-	        description: "hi hello"
-	      },
-	      {
-	        project: "TCS",
-	        from: "June-2013",
-	        to: "May-2014",
-	        description: "hi hello"
-	      },
-	      {
-	        project: "TCS",
-	        from: "July-2014",
-	        to: "May-2015",
-	        description: "hi hello"
-	      }
-	    ]
-	  }
-	];
+    $scope.experiences=null;
+
+    var req = {
+	     method: 'GET',
+	     url: 'http://localhost:8000/experience',
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     }
+	    }
+	    $http(req).then(function mySucces(response) {
+	       
+	        $scope.experiences = response.data;
+	    },function myError(response) {
+	    //alert("myError");
+	   
+	    console.log(response);
+	        $scope.nodejsVal = response.statusText;
+	        alert("myError  "+$scope.nodejsVal);
+     });
+console.log( $scope.experiences);
+
 
 	$scope.load=function()
 	{
