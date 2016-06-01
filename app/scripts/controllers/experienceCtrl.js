@@ -17,11 +17,15 @@ angular.module('introMeApp')
      $scope.parentIndex=null;
      $scope.maxDateProject=null;
      $scope.minDateProject=null;
+     $scope.myAlert=true;
+     $scope.masterData=null;
+     var queryName=null;
 
      $scope.months=[ 'January','February','March','April','May','June','July' ,'August','September','October','November','December']
     //Experiance JSON
     	
     $scope.experiences=null;
+
 
     var req = {
 	     method: 'GET',
@@ -33,22 +37,22 @@ angular.module('introMeApp')
 	    $http(req).then(function mySucces(response) {
 	       
 	        $scope.experiences = response.data;
+	        $scope.masterData = response.data;
+	        if($scope.experiences.length==0)
+			   {
+			   	$scope.myAlert=true;
+			   }
+			   else
+			   {
+			   	$scope.myAlert=false;
+			   }
+			   console.log(response.data);
 	    },function myError(response) {
-	    //alert("myError");
-	   
-	    console.log(response);
+	    	console.log(response);
 	        $scope.nodejsVal = response.statusText;
-	        alert("myError  "+$scope.nodejsVal);
+	         alert("myError  "+$scope.nodejsVal);
      });
-console.log( $scope.experiences);
 
-
-	$scope.load=function()
-	{
-		$route.reload();
-	};
-
-	
 // add edit projects
 
 $scope.addProject=function(index){
@@ -73,20 +77,12 @@ $scope.editProject=function(index,parent){
  $scope.childIndex=index;
  $scope.parentIndex=parent;
 
- var d= $scope.experiences[parent].from;
+ 	var d= $scope.experiences[parent].from;
     var dd= $scope.experiences[parent].to;
 
 
 	$scope.minDateProject = $scope.minDateProject ? null : new Date("01/March/2011");
 	$scope.maxDateProject=$scope.minDateProject ? null : new Date(dd);
- //    var a=$scope.experiences[parent].projects[index].to;
- //    var b=$scope.experiences[parent].projects[index].from;
- //    console.log(new Date(a));
- //    console.log(new Date(b));
- //    a= $scope.months[new Date(a).getMonth()]+"-"+ new Date(a).getFullYear();
- //    b=$scope.months[new Date(b).getMonth()]+"-"+ new Date(b).getFullYear();
-	//  $scope.experiences[parent].projects[index].to= a;
-	// $scope.experiences[parent].projects[index].from=b;
  $scope.projectData=$scope.experiences[parent].projects[index];
  console.log(index,parent);
 };
@@ -94,24 +90,71 @@ $scope.editProject=function(index,parent){
 $scope.saveUpdateProject=function(data)
 {
  	console.log($scope.childIndex,$scope.parentIndex);
+ 	alert($scope.parentIndex);
+
+ 	data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
+	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
+	
 	 if($scope.childIndex==null)
 	 {
-	 	// Save New values 
-	 	data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
-	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
-
+	 	// Save New Project 
+	 	console.log("DAta to controller  Data ")
+		console.log(data);
+	 	
 	 	$scope.experiences[$scope.parentIndex].projects.push(data);
-	 	console.log("Savin Values !!!!");
-	 	console.log(data);
+	 	var fData=$scope.experiences[$scope.parentIndex];
+	 	delete fData['_id'];
+	 	fData=angular.toJson(fData);
+	 	var jsonData =angular.toJson(fData);
+	 	console.log("Dtat Going to save")
+        console.log(jsonData);
+        var abc='?company='+$scope.masterData[$scope.parentIndex].company;
+        var req = {
+	     method: 'PUT',
+	     url: 'http://localhost:8000/experience'+abc,
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     },
+	     data:jsonData
+	    };
+	    $http(req).then(function mySucces(response) {
+	         console.log("SUCCESS DATA");
+	         console.log(response.data);
+	    },function myError(response) {
+	    	 console.log(response);
+	         //$scope.nodejsVal = response.statusText;
+	         //alert("myError  "+$scope.nodejsVal);
+		 });
+		 $scope.projectData=null; //setting html's add/edit model object to null 
 	 }
 	 else
 	 {
-	 	// update values
-	 	data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
-	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
+	 	// update Project
 	 	$scope.experiences[$scope.parentIndex].projects[$scope.childIndex]=data;
-	 	console.log(data.from+"  to "+data.to);
-	 	console.log("Updating Values !!!!");
+	 	var fData=$scope.experiences[$scope.parentIndex];
+	 	delete fData['_id'];
+	 	fData=angular.toJson(fData);
+	 	var jsonData =angular.toJson(fData);
+	 	console.log("Dtat Going to Update")
+        console.log(jsonData);
+        var abc='?company='+$scope.masterData[$scope.parentIndex].company;
+        var req = {
+	     method: 'PUT',
+	     url: 'http://localhost:8000/experience'+abc,
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     },
+	     data:jsonData
+	    };
+	    $http(req).then(function mySucces(response) {
+	         console.log("SUCCESS DATA");
+	         console.log(response.data);
+	    },function myError(response) {
+	    	 console.log(response);
+	         // $scope.nodejsVal = response.statusText;
+	         // alert("myError  "+$scope.nodejsVal);
+		 });
+	 	$scope.projectData=null; //setting html's add/edit model object to null 
 	 }
  	$scope.childIndex=null;
  	$scope.parentIndex=null;
@@ -131,6 +174,8 @@ $scope.editExperiance=function(index)
  	$scope.projectBtn="Update";
  	console.log(index);
  	$scope.experinceData=$scope.experiences[index];
+ 	queryName=$scope.experiences[$scope.parentIndex].company;
+ 	console.log(queryName);
 
 
 };
@@ -146,18 +191,68 @@ $scope.saveUpdateExprience=function(data)
 		temp['from']=data.from;
 		temp['to']=data.to;
 		temp['projects']=[];
+		
 		$scope.experiences.push(temp);
 		console.log(temp);
 		console.log("Savin Values !!!!");
-	}
+        var req = {
+	     method: 'POST',
+	     url: 'http://localhost:8000/experience',
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     },
+	     data:temp
+	    }
+	    $http(req).then(function mySucces(response) {
+	       
+	        //$scope.experiences = response.data;
+	        console.log("SUCCESS DATA");
+	        console.log(response.data);
+	    },function myError(response) {
+	    	console.log(response);
+	        $scope.nodejsVal = response.statusText;
+	         alert("myError  "+$scope.nodejsVal);
+     });
+	    $scope.experinceData=null;
+		}
 	else
 	{
 		// update Experience
 		data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
 	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
+		var abc='?company='+queryName;
+		console.log("query data to be sent");
+		console.log($scope.masterData[$scope.parentIndex])
 		$scope.experiences[$scope.parentIndex]=data;
 	 	console.log("Updating Values !!!!");
+	 	
+	 	
+	 	delete data['_id'];
+	 	data=angular.toJson(data);
+	 	console.log("Json Dta without sshkey")
 	 	console.log(data);
+	 	var jsonData =JSON.stringify(data);
+            console.log(jsonData);
+
+        var req = {
+	     method: 'PUT',
+	     url: 'http://localhost:8000/experience'+abc,
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     },
+	     data:jsonData
+	    }
+	    $http(req).then(function mySucces(response) {
+	       
+	        //$scope.experiences = response.data;
+	        console.log("SUCCESS DATA");
+	        console.log(response.data);
+	    },function myError(response) {
+	    	console.log(response);
+	        $scope.nodejsVal = response.statusText;
+	         alert("myError  "+$scope.nodejsVal);
+     });
+	    $scope.experinceData=null;
 	}
 	$scope.childIndex=null;
  	$scope.parentIndex=null;
@@ -185,16 +280,35 @@ $scope.delete=function()
 		// Delete  whole Experince
 		console.log($scope.parentIndex);
 	 	console.log("Deleting experiance !!!!");
-	 	if ($scope.parentIndex > -1)
-	 	{
-			$scope.experiences.splice($scope.parentIndex, 1);
-		}
+	 	
+			
 
-	 	//delete $scope.experiences[$scope.parentIndex];
-	 	console.log($scope.experiences);
+	 	queryName=$scope.experiences[$scope.parentIndex].company
+	 	$scope.experiences.splice($scope.parentIndex, 1);
 
-	 	// $scope.load();
-	 	//$route.reload();
+	 	var abc='?company='+queryName;
+
+        var req = {
+	     method: 'DELETE',
+	     url: 'http://localhost:8000/experience'+abc,
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     }/*,
+	     data:jsonData*/
+	    }
+	    $http(req).then(function mySucces(response) {
+	       
+	        //$scope.experiences = response.data;
+	        console.log("SUCCESS DATA");
+	        console.log(response.data);
+	    },function myError(response) {
+	    	console.log(response);
+	        $scope.nodejsVal = response.statusText;
+	         alert("myError  "+$scope.nodejsVal);
+     });
+	    $scope.experinceData=null;
+
+
 	}
 	else
 	{
@@ -206,23 +320,41 @@ $scope.delete=function()
 	 	{
 			$scope.experiences[$scope.parentIndex].projects.splice($scope.childIndex, 1);
 		}
-	 	// delete $scope.experiences[$scope.parentIndex].projects[$scope.childIndex];
-	 	console.log($scope.experiences[$scope.parentIndex].projects);
+	 	var fData=$scope.experiences[$scope.parentIndex];
+	 	delete fData['_id'];
+	 	fData=angular.toJson(fData);
+	 	console.log("full experience Data ");
+	    console.log(fData);
+	 	console.log("data for update");
+	 	console.log($scope.experiences);
 
-	 	// $scope.load();
-	 	//$route.reload();
+	 	var jsonData =angular.toJson(fData);
+	 	console.log("Dtat Going to save")
+            console.log(jsonData);
+            var abc='?company='+$scope.masterData[$scope.parentIndex].company;
+        var req = {
+	     method: 'PUT',
+	     url: 'http://localhost:8000/experience'+abc,
+	     headers: {
+	       'Content-Type': 'application/JSON'
+	     },
+	     data:jsonData
+	    };
+	    $http(req).then(function mySucces(response) {
+	         console.log("SUCCESS DATA");
+	         console.log(response.data);
+	    },function myError(response) {
+	    	 console.log(response);
+	         $scope.nodejsVal = response.statusText;
+	         alert("myError  "+$scope.nodejsVal);
+		 });
+	 	$scope.projectData=null; //setting html's add/edit model object to null 
 	}
 	$scope.childIndex=null;
  	$scope.parentIndex=null;
 
 };
 
-  //tooltip
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip({
-        placement : 'top'
-    });
-});
 
  //datepicker start
         $scope.clear = function () {
@@ -257,6 +389,5 @@ $(document).ready(function(){
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
 
- //////////////date end
 
   });
