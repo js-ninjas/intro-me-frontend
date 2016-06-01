@@ -15,7 +15,7 @@ angular.module('introMeApp')
 
         var req = {
                  method: 'GET',
-                 url: 'http://localhost:8000/getHobby',
+                 url: 'http://localhost:8000/hobbies',
                  headers: {
                    'Content-Type': 'application/JSON'
                  }
@@ -23,6 +23,7 @@ angular.module('introMeApp')
             $http(req).then(function mySucces(response) {
                
                 $scope.hobbies = response.data;
+                console.log(response.data);
             },function myError(response) {
                 //alert("myError");
                
@@ -40,29 +41,55 @@ angular.module('introMeApp')
                 $scope.hobbies.push(temp);
                 $scope.newHobby = null;
                 $scope.newDesc = null;
+                temp=angular.toJson(temp);
+               var req = {
+                 method: 'POST',
+                 url: 'http://localhost:8000/hobbies',
+                 headers: {
+                   'Content-Type': 'application/JSON'
+                 },
+                 data:temp
+                }
+                $http(req).then(function mySucces(response) {
+                   
+                    //$scope.experiences = response.data;
+                    console.log("SUCCESS DATA");
+                    console.log(response.data);
+                },function myError(response) {
+                    console.log(response);
+                    $scope.nodejsVal = response.statusText;
+                     alert("myError  "+$scope.nodejsVal);
+                });
             }
             else {
                 alert("Fill the form");
             }
-
-
-            
-
-            /*var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-              $scope.nodejsVal = xhttp.responseText;
-            }
-            else{
-                alert("Not working")
-            }
-          };
-          xhttp.open("GET", "http://localhost:8000/getHobby", true);
-          xhttp.send();*/
          };
 
+
         $scope.removeHobby = function (index) {
-            $scope.hobbies.splice(index, 1)
+
+            var abc='?name='+$scope.hobbies[index].name;
+             $scope.hobbies.splice(index, 1)
+
+            var req = {
+             method: 'DELETE',
+             url: 'http://localhost:8000/hobbies'+abc,
+             headers: {
+               'Content-Type': 'application/JSON'
+             }/*,
+             data:jsonData*/
+            }
+            $http(req).then(function mySucces(response) {
+               
+                //$scope.experiences = response.data;
+                console.log("SUCCESS DATA");
+                console.log(response.data);
+            },function myError(response) {
+                console.log(response);
+                $scope.nodejsVal = response.statusText;
+                 alert("myError  "+$scope.nodejsVal);
+            });
         };
 
         $scope.editHobby = function (index) {
@@ -73,10 +100,34 @@ angular.module('introMeApp')
             }
 
             if (index == null && $scope.newHobby != null && $scope.newDesc != null) {
+                var abc="?name="+$scope.hobbies[$scope.pos]['name'];
                 $scope.hobbies[$scope.pos]['name'] = $scope.newHobby;
                 $scope.hobbies[$scope.pos]['desc'] = $scope.newDesc;
                 $scope.newHobby = null;
                 $scope.newDesc = null;
+                var data=$scope.hobbies[$scope.pos];
+
+                delete data['_id'];
+                data=angular.toJson(data);
+                 var jsonData =JSON.stringify(data);
+                    var req = {
+                     method: 'PUT',
+                     url: 'http://localhost:8000/hobbies'+abc,
+                     headers: {
+                       'Content-Type': 'application/JSON'
+                     },
+                     data:jsonData
+                    }
+                    $http(req).then(function mySucces(response) {
+                       
+                        //$scope.experiences = response.data;
+                        console.log("SUCCESS DATA");
+                        console.log(response.data);
+                    },function myError(response) {
+                        console.log(response);
+                        $scope.nodejsVal = response.statusText;
+                         alert("myError  "+$scope.nodejsVal);
+                    });
             }
             else if (index >= 0) {
                 console.log("Do nothing");

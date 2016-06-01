@@ -64,11 +64,6 @@ $scope.addProject=function(index){
     var dd= $scope.experiences[index].to;
     $scope.minDateProject = new Date(d);
 	$scope.maxDateProject= new Date(dd);
-   
-    //Experiance JSON
-    console.log($scope.maxDateProject);
-    console.log($scope.minDateProject);
-	console.log(index);
 };
 
 $scope.editProject=function(index,parent){
@@ -90,24 +85,17 @@ $scope.editProject=function(index,parent){
 $scope.saveUpdateProject=function(data)
 {
  	console.log($scope.childIndex,$scope.parentIndex);
- 	alert($scope.parentIndex);
-
  	data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
 	
 	 if($scope.childIndex==null)
 	 {
 	 	// Save New Project 
-	 	console.log("DAta to controller  Data ")
-		console.log(data);
-	 	
 	 	$scope.experiences[$scope.parentIndex].projects.push(data);
 	 	var fData=$scope.experiences[$scope.parentIndex];
 	 	delete fData['_id'];
 	 	fData=angular.toJson(fData);
 	 	var jsonData =angular.toJson(fData);
-	 	console.log("Dtat Going to save")
-        console.log(jsonData);
         var abc='?company='+$scope.masterData[$scope.parentIndex].company;
         var req = {
 	     method: 'PUT',
@@ -135,8 +123,6 @@ $scope.saveUpdateProject=function(data)
 	 	delete fData['_id'];
 	 	fData=angular.toJson(fData);
 	 	var jsonData =angular.toJson(fData);
-	 	console.log("Dtat Going to Update")
-        console.log(jsonData);
         var abc='?company='+$scope.masterData[$scope.parentIndex].company;
         var req = {
 	     method: 'PUT',
@@ -193,8 +179,6 @@ $scope.saveUpdateExprience=function(data)
 		temp['projects']=[];
 		
 		$scope.experiences.push(temp);
-		console.log(temp);
-		console.log("Savin Values !!!!");
         var req = {
 	     method: 'POST',
 	     url: 'http://localhost:8000/experience',
@@ -221,19 +205,13 @@ $scope.saveUpdateExprience=function(data)
 		data.to=$scope.months[new Date(data.to).getMonth()]+"-"+ new Date(data.to).getFullYear();
 	 	data.from=$scope.months[new Date(data.from).getMonth()]+"-"+ new Date(data.from).getFullYear();
 		var abc='?company='+queryName;
-		console.log("query data to be sent");
-		console.log($scope.masterData[$scope.parentIndex])
 		$scope.experiences[$scope.parentIndex]=data;
 	 	console.log("Updating Values !!!!");
 	 	
 	 	
 	 	delete data['_id'];
 	 	data=angular.toJson(data);
-	 	console.log("Json Dta without sshkey")
-	 	console.log(data);
 	 	var jsonData =JSON.stringify(data);
-            console.log(jsonData);
-
         var req = {
 	     method: 'PUT',
 	     url: 'http://localhost:8000/experience'+abc,
@@ -323,15 +301,8 @@ $scope.delete=function()
 	 	var fData=$scope.experiences[$scope.parentIndex];
 	 	delete fData['_id'];
 	 	fData=angular.toJson(fData);
-	 	console.log("full experience Data ");
-	    console.log(fData);
-	 	console.log("data for update");
-	 	console.log($scope.experiences);
-
 	 	var jsonData =angular.toJson(fData);
-	 	console.log("Dtat Going to save")
-            console.log(jsonData);
-            var abc='?company='+$scope.masterData[$scope.parentIndex].company;
+	 	var abc='?company='+$scope.masterData[$scope.parentIndex].company;
         var req = {
 	     method: 'PUT',
 	     url: 'http://localhost:8000/experience'+abc,
