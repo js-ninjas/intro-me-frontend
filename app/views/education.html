@@ -13,7 +13,7 @@
   <span class="pull-right editHobby">
   <a data-toggle="modal" ><span class="glyphicon glyphicon-pencil editHobby" ng-click="showEdit()"></span></a>
   </span>
-  <form class="form-horizontal" role="form" ng-submit="savePersonInfo(personInfo)">
+  <form class="form-horizontal" role="form" ng-submit="saveEducationDetails(education)">
   <h4>Matriculation:</h4>
 
   <div class="panel col-md-12 panel-default blocks ">
@@ -23,37 +23,36 @@
             <i class="fa fa-coffee"></i>
             This is an <strong>.alert</strong>. Use this to show important messages to the user.
          </div> -->
-      
-        
+
           <div ng-show="hideShow">
             <div class="form-group" >
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.fName}}</label>
+                <label class="lable pad-up" >{{education.matriculation.name}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.lName}}</label>
+                <label class="lable pad-up" >{{education.matriculation.boardUniversity}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Subjects:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.matriculation.subjects}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.email}}</label>
+                <label class="lable pad-up" >{{education.matriculation.percentageCGPA}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{ personInfo.mDate | date : 'MMMM-yyyy'}} </label>
+                <label class="lable pad-up" >{{ education.matriculation.passingYear | date : 'MMMM-yyyy'}} </label>
               </div>
             </div>
           </div>
@@ -62,25 +61,25 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                 <input class="form-control" ng-model="personInfo.fName" type="text">
+                 <input class="form-control" ng-model="education.matriculation.name" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.lName" type="text">
+                <input class="form-control" ng-model="education.matriculation.boardUniversity" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Subjects:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.matriculation.subjects" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.email"  type="text">
+                <input class="form-control" ng-model="education.matriculation.percentageCGPA"  type="text">
               </div>
             </div>
             <div class="form-group">
@@ -89,7 +88,7 @@
               <div class="form-group col-md-8" style="margin-left: 0px;">
               
                 <p class="input-group">
-                  <input type="text" class="form-control" datetime="MMMM-yyyy" datepicker-popup="MMMM-yyyy" ng-model="personInfo.mDate" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ></input>
+                  <input type="text" class="form-control" datetime="MMMM-yyyy" datepicker-popup="MMMM-yyyy" ng-model="education.matriculation.passingYear" is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)"  close-text="Close" ></input>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -116,37 +115,37 @@
             <div class="form-group" >
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.fName}}</label>
+                <label class="lable pad-up" >{{education.intermediate.name}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.lName}}</label>
+                <label class="lable pad-up" >{{education.intermediate.boardUniversity}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Stream:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.intermediate.stream}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Subjects:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.intermediate.subjects}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.email}}</label>
+                <label class="lable pad-up" >{{education.intermediate.percentageCGPA}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.iDate | date : 'MMMM-yyyy'}}</label>
+                <label class="lable pad-up" >{{education.intermediate.passingYear | date : 'MMMM-yyyy'}}</label>
               </div>
             </div>
           </div>
@@ -155,31 +154,31 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                 <input class="form-control" ng-model="personInfo.fName" type="text">
+                 <input class="form-control" ng-model="education.intermediate.name" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.lName" type="text">
+                <input class="form-control" ng-model="education.intermediate.boardUniversity" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Stream:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.intermediate.stream" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Subjects:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.intermediate.subjects" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.email"  type="text">
+                <input class="form-control" ng-model="education.intermediate.percentageCGPA"  type="text">
               </div>
             </div>
             <div class="form-group">
@@ -187,7 +186,7 @@
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="personInfo.iDate" is-open="opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="education.intermediate.passingYear" is-open="opened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)"  close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -209,37 +208,37 @@
             <div class="form-group" >
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.fName}}</label>
+                <label class="lable pad-up" >{{education.graduation.name}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.lName}}</label>
+                <label class="lable pad-up" >{{education.graduation.boardUniversity}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Stream:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.graduation.stream}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Subjects:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.graduation.subjects}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.email}}</label>
+                <label class="lable pad-up" >{{education.graduation.percentageCGPA}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.gDate | date : 'MMMM-yyyy'}}</label>
+                <label class="lable pad-up" >{{education.graduation.passingYear | date : 'MMMM-yyyy'}}</label>
               </div>
             </div>
           </div>
@@ -248,31 +247,31 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                 <input class="form-control" ng-model="personInfo.fName" type="text">
+                 <input class="form-control" ng-model="education.graduation.name" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.lName" type="text">
+                <input class="form-control" ng-model="education.graduation.boardUniversity" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Stream:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.graduation.stream" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Subjects:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.graduation.subjects" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.email"  type="text">
+                <input class="form-control" ng-model="education.graduation.percentageCGPA"  type="text">
               </div>
             </div>
             <div class="form-group">
@@ -280,7 +279,7 @@
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="personInfo.gDate" is-open="opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="education.graduation.passingYear" is-open="opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)"  close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -302,37 +301,37 @@
             <div class="form-group" >
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.fName}}</label>
+                <label class="lable pad-up" >{{education.postGraduation.name}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.lName}}</label>
+                <label class="lable pad-up" >{{education.postGraduation.boardUniversity}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Stream:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.postGraduation.stream}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-3 control-label">Subjects:</label>
               <div class="col-md-8">
-                <label class="lable pad-up">{{personInfo.contactNo}}</label>
+                <label class="lable pad-up">{{education.postGraduation.subjects}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.email}}</label>
+                <label class="lable pad-up" >{{education.postGraduation.percentageCGPA}}</label>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Year of passing:</label>
               <div class="col-lg-8">
-                <label class="lable pad-up" >{{personInfo.pDate | date : 'MMMM-yyyy'}}</label>
+                <label class="lable pad-up" >{{education.postGraduation.passingYear | date : 'MMMM-yyyy'}}</label>
               </div>
             </div>
           </div>
@@ -341,31 +340,31 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">School name:</label>
               <div class="col-lg-8">
-                 <input class="form-control" ng-model="personInfo.fName" type="text">
+                 <input class="form-control" ng-model="education.postGraduation.name" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Board name:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.lName" type="text">
+                <input class="form-control" ng-model="education.postGraduation.boardUniversity" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Stream:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.postGraduation.stream" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Subjects:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.company" type="text">
+                <input class="form-control" ng-model="education.postGraduation.subjects" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Percentage/CGPA:</label>
               <div class="col-lg-8">
-                <input class="form-control" ng-model="personInfo.email"  type="text">
+                <input class="form-control" ng-model="education.postGraduation.percentageCGPA"  type="text">
               </div>
             </div>
             <div class="form-group">
@@ -373,7 +372,7 @@
               <!-- Date Picker -->
               <div class="form-group col-md-8" style="margin-left: 0px;">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="personInfo.pDate" is-open="opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="MMMM-yyyy" ng-model="education.postGraduation.passingYear" is-open="opened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" datepicker-mode="'year'" date-disabled="disabled(date, mode)"  close-text="Close" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>

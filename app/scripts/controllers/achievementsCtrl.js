@@ -76,7 +76,7 @@ angular.module('introMeApp')
                         }
                     }
 
-                    if (pos == -1) {
+                    if (pos == -1) { // save new acheviement for the year
                         var newObj = {};
                         var achievementsDesc = [];
                         newObj['achievementName'] = $scope.achievementName;
@@ -91,7 +91,7 @@ angular.module('introMeApp')
                         //sortYearOfAchievement();
                         resetNgModal();
                     }
-                    else {
+                    else {   // update(push) acheviement for given year
                         temp["achievementName"] = $scope.achievementName;
                         temp["description"] = $scope.achievementDesc;
                         temp["rawDate"] = rawDate;
@@ -100,7 +100,7 @@ angular.module('introMeApp')
                         resetNgModal();
                     }
                 }
-                else {
+                else { // save new acheviement
                     var newObj = {};
                     var achievementsDesc = [];
                     newObj['achievementName'] = $scope.achievementName;
@@ -133,6 +133,7 @@ angular.module('introMeApp')
 
 
         $scope.setEditValues = function (index, yearIndex) {
+            console.log($scope.achievements);
             $scope.addEdit = "Edit";
             $scope.editIndex = index;
             $scope.editYearIndex = yearIndex;

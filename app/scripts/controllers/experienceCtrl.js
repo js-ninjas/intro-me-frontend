@@ -216,7 +216,7 @@ $scope.saveUpdateExprience=function(data)
 	     method: 'PUT',
 	     url: 'http://localhost:8000/experience'+abc,
 	     headers: {
-	       'Content-Type': 'application/JSON'
+	      	'Content-Type': 'application/JSON'
 	     },
 	     data:jsonData
 	    }
