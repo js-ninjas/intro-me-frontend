@@ -6,7 +6,14 @@
       <i class="fa fa-coffee"></i>
       Please update your <strong>Experience</strong> details.
     </div>
-	<div class="container col-sm-12 panel" ng-repeat="experience in experiences" ng-init="outerIndex=$index">
+    <!-- Test of services -->
+     <!-- <div >
+        Enter a number:
+        <input type="number" ng-model="number" />
+        <button ng-click="doSquare()">X<sup>2</sup></button>
+        <button ng-click="doCube()">X<sup>3</sup></button>
+<div>Answer: {{answer}}</div> </div> -->
+	<div class="container col-sm-12 panel" ng-repeat="experience in experiences  " ng-init="outerIndex=$index"> <!-- | orderBy:'to' -->
 		<div class="panel panel-primary">
 		    <div class="panel-heading col-sm-12 panel " style="margin-bottom: 1px;" >
 		    	<div class="col-sm-5"><h4>Company Name: {{experience.company}} </h4></div>

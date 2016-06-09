@@ -8,7 +8,18 @@
  * Controller of the introMeApp
  */
 angular.module('introMeApp')
-  .controller('experienceCtrl', function ($scope,$route,$http) {
+  .controller('experienceCtrl', function ($scope,$route,$http,CalculatorService) {
+
+  	//###########SERVICE implementation Example #######################
+
+  	/*$scope.doSquare = function() {
+        $scope.answer = CalculatorService.square($scope.number);
+    };
+	$scope.doCube = function() {
+	 	$scope.answer = CalculatorService.cube($scope.number);
+	};*/
+
+  	//##################################
        
      $scope.project="Add";
      $scope.projectBtn="Save";
@@ -38,6 +49,7 @@ angular.module('introMeApp')
 	       
 	        $scope.experiences = response.data;
 	        $scope.masterData = response.data;
+	        $scope.experiences.sort(compare);
 	        if($scope.experiences.length==0)
 			   {
 			   	$scope.myAlert=true;
@@ -52,6 +64,17 @@ angular.module('introMeApp')
 	        $scope.nodejsVal = response.statusText;
 	         alert("myError  "+$scope.nodejsVal);
      });
+
+//short Object
+function compare(a,b) {
+  if (a.to < b.to)
+    return -1;
+  else if (a.to > b.to)
+    return 1;
+  else 
+    return 0;
+}
+
 
 // add edit projects
 
